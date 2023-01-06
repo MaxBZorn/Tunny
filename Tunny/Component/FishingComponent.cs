@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Windows.Forms;
 
 using Grasshopper;
 using Grasshopper.GUI;
@@ -16,6 +15,7 @@ namespace Tunny.Component
     public partial class FishingComponent : GH_Component, IDisposable
     {
         internal OptimizationWindow OptimizationWindow;
+        internal MainWindow MainWindow;
         internal GrasshopperInOut GhInOut;
         internal Fish[] Fishes;
 
@@ -81,18 +81,20 @@ namespace Tunny.Component
         private void ShowOptimizationWindow()
         {
             GH_DocumentEditor owner = Instances.DocumentEditor;
+            MainWindow = new MainWindow();
 
-            if (OptimizationWindow == null || OptimizationWindow.IsDisposed)
-            {
-                OptimizationWindow = new OptimizationWindow(this)
-                {
-                    StartPosition = FormStartPosition.Manual
-                };
+            MainWindow.Show();
+            // if (OptimizationWindow == null || OptimizationWindow.IsDisposed)
+            // {
+            //     OptimizationWindow = new OptimizationWindow(this)
+            //     {
+            //         StartPosition = FormStartPosition.Manual
+            //     };
 
-                GH_WindowsFormUtil.CenterFormOnWindow(OptimizationWindow, owner, true);
-                owner.FormShepard.RegisterForm(OptimizationWindow);
-            }
-            OptimizationWindow.Show(owner);
+            //     GH_WindowsFormUtil.CenterFormOnWindow(OptimizationWindow, owner, true);
+            //     owner.FormShepard.RegisterForm(OptimizationWindow);
+            // }
+            // OptimizationWindow.Show(owner);
         }
 
         protected override Bitmap Icon => Resource.TunnyIcon;

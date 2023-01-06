@@ -365,3 +365,13 @@ dotnet_naming_style.s_camelcase.capitalization = camel_case
 # Additions
 dotnet_code_quality.ca1711.allowed_suffixes = Attribute
 dotnet_diagnostic.CA1707.severity = none
+
+
+# xaml rules
+[**.{xaml,xml}]
+indent_style = space
+indent_size = 4
+charset = utf-8-bom
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = crlf
